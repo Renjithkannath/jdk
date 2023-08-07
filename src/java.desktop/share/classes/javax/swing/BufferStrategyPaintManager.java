@@ -240,6 +240,8 @@ class BufferStrategyPaintManager extends RepaintManager.PaintManager {
                 if (cx != 0 || cy != 0) {
                     bsg.translate(-cx, -cy);
                 }
+                if(!bufferComponent.isOpaque())
+                    bsg.clearRect(x, y, w, h);
                 ((SunGraphics2D)bsg).constrain(xOffset + cx, yOffset + cy,
                                                x + w, y + h);
                 bsg.setClip(x, y, w, h);
