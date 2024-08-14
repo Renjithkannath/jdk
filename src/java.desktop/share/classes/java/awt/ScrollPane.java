@@ -25,24 +25,15 @@
 
 package java.awt;
 
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseWheelEvent;
-import java.awt.peer.ScrollPanePeer;
-import java.beans.ConstructorProperties;
-import java.beans.Transient;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serial;
+import java.awt.event.*;
+import java.awt.geom.*;
+import java.awt.peer.*;
+import java.beans.*;
+import java.io.*;
 
-import javax.accessibility.Accessible;
-import javax.accessibility.AccessibleContext;
-import javax.accessibility.AccessibleRole;
+import javax.accessibility.*;
 
-import sun.awt.ScrollPaneWheelScroller;
-import sun.awt.SunToolkit;
+import sun.awt.*;
 
 /**
  * A container class which implements automatic horizontal and/or
@@ -508,7 +499,12 @@ public class ScrollPane extends Container implements Accessible {
         Point p = getScrollPosition();
         Dimension cs = calculateChildSize();
 
-        c.reshape(- p.x, - p.y, cs.width, cs.height);
+        GraphicsConfiguration gc = c.getGraphicsConfiguration();
+        AffineTransform tx = gc.getDefaultTransform();
+        double uiScaleX = tx.getScaleX();
+        double uiScaleY = tx.getScaleY();
+
+        c.reshape(- p.x, - p.y, (int) (cs.width * uiScaleX), (int) (cs.height*uiScaleY));
         ScrollPanePeer peer = (ScrollPanePeer)this.peer;
         if (peer != null) {
             peer.childResized(cs.width, cs.height);
