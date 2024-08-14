@@ -25,15 +25,27 @@
 
 package java.awt;
 
-import java.awt.event.*;
-import java.awt.geom.*;
-import java.awt.peer.*;
-import java.beans.*;
-import java.io.*;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelEvent;
+import java.awt.geom.AffineTransform;
+import java.awt.peer.ScrollPanePeer;
+import java.beans.ConstructorProperties;
+import java.beans.Transient;
+import java.io.IOException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serial;
 
-import javax.accessibility.*;
+import javax.accessibility.Accessible;
+import javax.accessibility.AccessibleContext;
+import javax.accessibility.AccessibleRole;
 
-import sun.awt.*;
+import sun.awt.ScrollPaneWheelScroller;
+import sun.awt.SunToolkit;
 
 /**
  * A container class which implements automatic horizontal and/or
