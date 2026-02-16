@@ -64,14 +64,6 @@ public class ExceptionFromPrintableIsIgnoredTest {
                 "Test started. threadType='%s', exceptionType='%s'",
                 threadType, exceptionType));
 
-        String osName = System.getProperty("os.name");
-        boolean isOSX = osName.toLowerCase().startsWith("mac");
-        if ((exceptionType == TestExceptionType.RE) && !isOSX) {
-            System.out.println(
-                "Currently this test scenario can be verified only on macOS.");
-            return;
-        }
-
         printError = null;
 
         if (threadType == TestThreadType.MAIN) {
