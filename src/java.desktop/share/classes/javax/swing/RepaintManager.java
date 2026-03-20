@@ -384,7 +384,7 @@ public class RepaintManager
             for (int i = 0; i < n; i++) {
                 if (component == invalidComponents.get(i)) {
                     invalidComponents.remove(i);
-                    return;
+                    break;
                 }
             }
         }
