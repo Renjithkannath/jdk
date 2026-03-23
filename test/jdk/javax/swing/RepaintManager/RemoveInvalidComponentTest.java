@@ -38,9 +38,6 @@ public final class RemoveInvalidComponentTest {
     private static volatile boolean isValidateCalled;
 
     private static final class EqualLabel extends JLabel {
-        private static int counter;
-
-        private final int id = ++counter;
 
         public EqualLabel(String text) {
             super(text);
@@ -48,7 +45,7 @@ public final class RemoveInvalidComponentTest {
 
         @Override
         public void validate() {
-            System.out.println("validate: " + id + " (" + hashCode() + ")");
+            System.out.println("validate called");
             isValidateCalled = true;
             super.validate();
         }
@@ -56,7 +53,7 @@ public final class RemoveInvalidComponentTest {
         @Override
         public boolean equals(Object obj) {
             return obj instanceof EqualLabel el
-                    && el.getText().equals(getText());
+                   && el.getText().equals(getText());
         }
 
         @Override
@@ -73,7 +70,7 @@ public final class RemoveInvalidComponentTest {
 
         System.out.println(label1.equals(label2));
 
-        JFrame frame = new JFrame("RepaintManagerTest");
+        JFrame frame = new JFrame("RemoveInvalidComponentTest");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         frame.add(label1);
@@ -82,9 +79,7 @@ public final class RemoveInvalidComponentTest {
         frame.setVisible(true);
 
         repaintManager.addInvalidComponent(label1);
-
         repaintManager.removeInvalidComponent(label2);
-
         repaintManager.validateInvalidComponents();
 
         frame.dispose();
