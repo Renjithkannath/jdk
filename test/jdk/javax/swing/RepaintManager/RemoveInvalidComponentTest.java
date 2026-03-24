@@ -68,7 +68,9 @@ public final class RemoveInvalidComponentTest {
         JLabel label1 = new EqualLabel("label");
         JLabel label2 = new EqualLabel("label");
 
-        System.out.println(label1.equals(label2));
+        if (!label1.equals(label2)) {
+            throw new RuntimeException("label1.equals(label2) returned false");
+        }
 
         JFrame frame = new JFrame("RemoveInvalidComponentTest");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
