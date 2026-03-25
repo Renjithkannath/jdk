@@ -26,7 +26,7 @@ import javax.swing.JLabel;
 import javax.swing.RepaintManager;
 import javax.swing.SwingUtilities;
 
-/**
+/*
  * @test
  * @bug 8361493
  * @key headful
@@ -73,7 +73,6 @@ public final class RemoveInvalidComponentTest {
         }
 
         JFrame frame = new JFrame("RemoveInvalidComponentTest");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         frame.add(label1);
         frame.add(label2);
