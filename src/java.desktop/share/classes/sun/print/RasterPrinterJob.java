@@ -1614,7 +1614,7 @@ public abstract class RasterPrinterJob extends PrinterJob {
             throw pe;
         } catch (Throwable printError) {
             throw (PrinterException)
-                    new PrinterException().initCause(printError.getCause());
+                    new PrinterException().initCause(printError);
         } finally {
             // reset previousPaper in case this job is invoked again.
             previousPaper = null;
