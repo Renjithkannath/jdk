@@ -2471,7 +2471,8 @@ MsgRouting AwtComponent::WmMouseMove(UINT flags, int x, int y)
      * Only report mouse move and drag events if a move or drag
      * actually happened -- Windows sends a WM_MOUSEMOVE in case the
      * app wants to modify the cursor.
-     * Skip sending a mouse move event during a double-tap if the movement is within the defined delta threshold
+     * Skip sending a mouse move event during a double-tap
+     * if the movement is within the defined delta threshold.
      */
 
     BOOL causedByTouchEvent = FALSE;
